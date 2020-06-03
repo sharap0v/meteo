@@ -1,8 +1,6 @@
-
 import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 import org.json.simple.parser.ParseException;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,7 +12,7 @@ public class MeteoClient{
     private URL url;
     private HttpURLConnection con;
 
-    public MeteoClient(double lat, double lon) throws IOException {
+    public MeteoClient(String lat, String lon) throws IOException {
         url = new URL("https://api.weather.yandex.ru/v1/informers?lat=" + lat+ "&lon="+lon);
         con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
@@ -32,7 +30,6 @@ public class MeteoClient{
         return content.toString();
 
     } catch (Exception e) {
-        e.printStackTrace();
         return "Нет данных";
     }
     }
